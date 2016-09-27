@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 
 export default class ResultBoard extends Component {
   render() {
-    let { operand, operation } = this.props;
-    let firstOperand = `${operand}  ${operation}`;
+    let { operand, operation, result } = this.props;
+    let showInfo;
+    if (!result.length) {
+      showInfo = `${operand}  ${operation}`;
+    } else {
+      showInfo = result;
+    }
     return (
       <div className="resultBoard">
         <h3 className="showResult">
-          { firstOperand }
+          { showInfo }
         </h3>
       </div>
     )

@@ -3,7 +3,8 @@ import { EventEmitter } from 'events';
 
 let _operand = '';
 let _operation = '';
-let _otherOperand = ''
+let _otherOperand = '';
+let _result ='';
 
 class CalculatorStore extends EventEmitter {
   constructor(props) {
@@ -28,6 +29,7 @@ class CalculatorStore extends EventEmitter {
           _operand = '';
           _operation = '';
           _otherOperand = '';
+          _result = '';
           this.emit('CHANGE');
           break;
         case 'CREATE_COMMAND':
@@ -36,6 +38,35 @@ class CalculatorStore extends EventEmitter {
           _otherOperand = _operand;
           _operand = ''
           this.emit('CHANGE');
+          break;
+        case 'GET_RESULT':
+          let result = 0;
+          switch (_operation) {
+            case "+":
+              result = Number(_otherOperand) + Number(_operand);
+              _result = result.toString();
+              this.emit('CHANGE');
+              break;
+            case "-":
+              result = Number(_otherOperand) - Number(_operand);
+              _result = result.toString();
+              this.emit('CHANGE');
+              break;
+            case "x":
+              result = Number(_otherOperand) * Number(_operand);
+              _result = result.toString();
+              this.emit('CHANGE');
+              break;
+            case "÷":
+              result = Number(_otherOperand) / Number(_operand);
+              _result = result.toString();
+              this.emit('CHANGE');
+              break;
+            default:
+              result = Number(_otherOperand) % Number(_operand);
+              _result = result.toString();
+              this.emit('CHANGE');
+          }
           break;
       }
     })
@@ -55,6 +86,10 @@ class CalculatorStore extends EventEmitter {
 
   getOperation() {
     return _operation;
+  }
+
+  getResult() {
+    return _result;
   }
 }
 

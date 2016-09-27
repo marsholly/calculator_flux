@@ -9,7 +9,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       operand: '',
-      operation: ''
+      operation: '',
+      result:''
     }
 
     this._onChange = this._onChange.bind(this);
@@ -26,7 +27,8 @@ export default class App extends Component {
   _onChange(){
     this.setState({
       operand: CalculatorStore.getAllNumbers(),
-      operation: CalculatorStore.getOperation()
+      operation: CalculatorStore.getOperation(),
+      result: CalculatorStore.getResult()
     })
   }
 
@@ -36,7 +38,7 @@ export default class App extends Component {
         <h1 className="text-center">Calculator</h1>
         <div className="row">
           <div className="text-center">
-            <ResultBoard operand = {this.state.operand} operation={this.state.operation}/>
+            <ResultBoard operand = {this.state.operand} operation={this.state.operation} result = {this.state.result}/>
             <OperationBoard />
           </div>
         </div>
