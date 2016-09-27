@@ -1,0 +1,30 @@
+.resultBoard {
+  width: 400px;
+  height: 60px;
+  background-color: #E0E0E0;
+  border-radius: 6px 6px 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.operationBoard {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0px 0px 6px 6px;
+}
+
+.operationBtn {
+  width:100px;
+  min-height: 50px;
+}
+
+.zeroBtn {
+  width:200px;
+  min-height: 50px;
+}
+
+.showResult {
+  float: right;
+}
