@@ -33,6 +33,7 @@ class CalculatorStore extends EventEmitter {
           this.emit('CHANGE');
           break;
         case 'CREATE_COMMAND':
+          _result = '';
           let { command } = action.payload;
           _operation = command;
           _otherOperand = _operand;
@@ -67,7 +68,7 @@ class CalculatorStore extends EventEmitter {
               _result = result.toString();
               this.emit('CHANGE');
           }
-          break;
+          _operand = _result;
       }
     })
   }
